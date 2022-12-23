@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ item.label }}</mat-card-title>
+    <mat-card-subtitle>{{ item.category }}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="item.done">{{ item.done }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ item.description }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="openTodoDialog(item)">edit</button>
+    <button mat-raised-button color="warn" (click)="deleteTodo(item.id)">delete</button>
+  </mat-card-actions>
+</mat-card>

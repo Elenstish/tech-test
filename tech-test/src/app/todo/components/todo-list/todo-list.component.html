@@ -1,1 +1,24 @@
-<p>todo-list works!</p>
+<section class="section">
+    <h1>TODO List</h1>
+
+    <app-todo-filter></app-todo-filter>
+
+    <section *ngIf="(todoList$ | async)?.length; else noComponents">
+      <mat-selection-list #todos
+        (selectionChange)="onGroupsChange(todos.selectedOptions.selected)">
+        <mat-list-option *ngFor="let item of (todoList$ | async)"
+         [value]="item"
+         [selected]="item.done">
+          <app-todo-item [item]="item"></app-todo-item>
+        </mat-list-option>
+      </mat-selection-list>
+
+      <p>
+        Options selected: {{todos.selectedOptions.selected.length}}
+      </p>
+    </section>
+
+    <ng-template #noComponents>
+      <p>There are no todo list</p>
+    </ng-template>
+  </section>

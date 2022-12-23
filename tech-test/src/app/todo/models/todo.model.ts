@@ -3,5 +3,5 @@ export interface TodoInterface {
   label: string;
   description: string;
   category: string;
-  done: boolean;
+  done: boolean | string;
 }
