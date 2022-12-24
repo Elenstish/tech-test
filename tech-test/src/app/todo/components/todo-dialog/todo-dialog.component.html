@@ -29,11 +29,18 @@
       <div>
         <mat-form-field>
           <mat-label>Category</mat-label>
-          <mat-icon matPrefix>label</mat-icon>
           <mat-select required formControlName="category">
             <mat-option>Select category</mat-option>
             <mat-option *ngFor="let item of categories" [value]="item">{{item}}</mat-option>
           </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field>
+          <mat-label>Enter date when task is done</mat-label>
+          <input matInput [matDatepicker]="doneDate" (click)="doneDate.open()" formControlName="done" placeholder="MM/DD/YYYY">
+          <mat-datepicker #doneDate></mat-datepicker>
         </mat-form-field>
       </div>
     </div>
@@ -45,9 +52,9 @@
         Cancel
       </button>
       <button [disabled]="!(todoForm.valid && todoForm.dirty)"
-            type="submit"
-            mat-flat-button
-            color="primary">
+              type="submit"
+              mat-flat-button
+              color="primary">
         Submit
       </button>
     </div>

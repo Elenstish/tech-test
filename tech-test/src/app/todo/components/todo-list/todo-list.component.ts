@@ -1,28 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { MatListOption } from '@angular/material/list'
-import { Observable } from "rxjs";
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatSelectionListChange } from '@angular/material/list';
+import { Observable } from 'rxjs';
+import * as moment from 'moment';
 
-import { TodoApiService } from '../../services/todo-api.service';
+import { TodoStoreService } from '../../store/services/todo-store.service';
 import { TodoInterface } from '../../models/todo.model';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  styleUrls: ['./todo-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent implements OnInit {
   public todoList$: Observable<TodoInterface[]>;
 
   constructor(
-    private todoApiService: TodoApiService
+    private todoStoreService: TodoStoreService
   ) { }
 
   public ngOnInit(): void {
-    this.todoList$ = this.todoApiService.getTodoList();
+    this.todoStoreService.getTodoList();
+    this.subscribeData();
   }
 
-  public onGroupsChange(options: MatListOption[]): void {
-    console.log(options);
+  public onGroupsChange(event: MatSelectionListChange): void {
+    let item: TodoInterface = event.option.value;
+    let done: string | boolean = (item.done) ? false : moment().format('DD-MM-YYYY');
+    item = {...item, done};
+
+    this.todoStoreService.patchTodo(item);
   }
 
+  private subscribeData(): void {
+    this.todoList$ = this.todoStoreService.selectTodoList$();
+  }
 }
