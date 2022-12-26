@@ -6,6 +6,7 @@
   <section *ngIf="(todoList$ | async)?.length; else noComponents">
     <mat-selection-list #todos (selectionChange)="onGroupsChange($event)">
       <mat-list-option #matOption
+                       matTooltip="Click to view details"
                        *ngFor="let item of (todoList$ | async)"
                        [value]="item"
                        [selected]="item.done">
