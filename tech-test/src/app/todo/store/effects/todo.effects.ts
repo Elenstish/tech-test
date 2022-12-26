@@ -77,7 +77,7 @@ export class TodoEffects {
           tap(value => console.log('value', value)),
           map(() => {
             this.router.navigate(['todo-list']);
-            return actions.deleteTodoItemSuccess()
+            return actions.deleteTodoItemSuccess();
           }),
           catchError((error: HttpErrorResponse) => of(actions.deleteTodoItemFailure({ error })))
         )
