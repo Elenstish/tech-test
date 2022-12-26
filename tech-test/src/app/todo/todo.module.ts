@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,7 +33,6 @@ import { TodoEffects } from 'src/app/todo/store/effects/todo.effects';
   ],
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule,
     TodoRoutingModule,
     MatFormFieldModule,

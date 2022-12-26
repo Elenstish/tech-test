@@ -18,13 +18,13 @@ export class TodoItemComponent implements OnInit {
   private id: number;
 
   constructor(
+    public dialog: MatDialog,
     private todoStoreService: TodoStoreService,
-    private dialog: MatDialog,
     private route: ActivatedRoute
   ) { }
 
   public ngOnInit(): void {
-    this.id = this.route.snapshot.params.id;
+    this.id = this.route.snapshot.params?.id;
     this.todoStoreService.getTodoItem(this.id);
     this.subscribeData();
   }

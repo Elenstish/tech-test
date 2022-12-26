@@ -83,7 +83,7 @@ export class TodoDialogComponent implements OnInit {
     this.todoForm.patchValue(this.data);
 
     if (typeof this.data.done === 'string') {
-      const parts = this.data.done.split("-")
+      const parts = this.data.done.split('-');
       const newDate = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
 
       this.todoForm.controls['done'].patchValue(newDate.toISOString());
