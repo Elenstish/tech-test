@@ -16,7 +16,7 @@ export class TodoFilterComponent {
   public searchControl: FormControl = new FormControl('');
 
   constructor(
-    private dialog: MatDialog,
+    public dialog: MatDialog,
     private todoStoreService: TodoStoreService
   ) { }
 
