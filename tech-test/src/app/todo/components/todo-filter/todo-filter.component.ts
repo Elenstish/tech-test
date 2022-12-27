@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, take } from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ import { TodoStoreService } from '../../store/services/todo-store.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoFilterComponent {
-  public searchControl: FormControl = new FormControl('');
+  public searchControl: UntypedFormControl = new UntypedFormControl('');
 
   constructor(
     public dialog: MatDialog,

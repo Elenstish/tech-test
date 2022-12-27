@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { filter, take } from 'rxjs/operators';
 import * as moment from 'moment';
 
@@ -14,14 +14,14 @@ import { TodoStoreService } from '../../store/services/todo-store.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoDialogComponent implements OnInit {
-  public todoForm: FormGroup;
+  public todoForm: UntypedFormGroup;
   public categories: string[] = ['house', 'bureaucracy'];
 
   constructor(
     public dialogRef: MatDialogRef<TodoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: TodoInterface,
     private todoStoreService: TodoStoreService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {}
 
   public ngOnInit(): void {

@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_BASE_HREF } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { of } from 'rxjs';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -42,7 +42,7 @@ describe('TodoFilterComponent', () => {
     fixture = TestBed.createComponent(TodoFilterComponent);
     component = fixture.componentInstance;
     todoStoreService = TestBed.inject(TodoStoreService);
-    const control = new FormControl('');
+    const control = new UntypedFormControl('');
     fixture.componentInstance.searchControl = control;
 
     fixture.detectChanges();
