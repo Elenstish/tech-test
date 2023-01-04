@@ -25,7 +25,7 @@ export class TodoListComponent implements OnInit {
   }
 
   public onGroupsChange(event: MatSelectionListChange): void {
-    let item: TodoInterface = event.option.value;
+    let item: TodoInterface = event.options[0].value;
     const done: string | boolean = (item.done) ? false : moment().format('DD-MM-YYYY');
     item = {...item, done};
 
